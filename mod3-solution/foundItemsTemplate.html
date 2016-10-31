@@ -1,0 +1,24 @@
+<div class="found-list">
+  <div class="alert alert-danger" ng-show="narrow.foundItems.length === 0">
+    Nothing found
+  </div>
+  <table class="table" ng-hide="narrow.foundItems.length === 0 || narrow.foundItems === undefined">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Name</th>
+        <th>Short name</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="item in narrow.foundItems">
+        <th scope="row">{{ $index + 1 }}</th>
+        <td>{{ item.name }}</td>
+        <td>{{ item.short_name }}</td>
+        <td>{{ item.description }}</td>
+        <td><button class="btn btn-danger" ng-click='narrow.onRemove({index: $index});'>Don't want this one!</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
