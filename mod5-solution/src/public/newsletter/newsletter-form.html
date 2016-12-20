@@ -1,0 +1,56 @@
+<div class="newsletter-form">
+  <h1>Sign up for our newsletter!</h1>
+
+  <form name='newsletterCtrl.newsletterForm' novalidate>
+      <input type="text" name="first_name" placeholder="First name"
+        ng-model="newsletter.user.first_name"
+        required>
+      <br>
+      <span ng-if="newsletterCtrl.newsletterForm.first_name.$invalid && newsletterCtrl.newsletterForm.first_name.$touched">
+        First name is required
+      </span>
+      <br>
+      <input type="text" name="last_name" placeholder="Last name"
+        ng-model="newsletter.user.last_name"
+        required>
+      <br>
+      <span ng-if="newsletterCtrl.newsletterForm.last_name.$invalid && newsletterCtrl.newsletterForm.last_name.$touched">
+        Last name is required
+      </span>
+      <br>
+      <input type="email" name="email" placeholder="Email"
+        ng-model="newsletter.user.email"
+        required>
+      <br>
+      <span ng-if="newsletterCtrl.newsletterForm.email.$invalid && newsletterCtrl.newsletterForm.email.$touched">
+        Must be a valid email address: handle@domain format
+      </span>
+      <br>
+      <input type="text" name="phone" placeholder="Phone ###-###-####"
+        ng-model="newsletter.user.phone"
+        pattern="(\d{3})-(\d{3})-(\d{4})"
+        required>
+      <br>
+      <span ng-if="newsletterCtrl.newsletterForm.phone.$invalid && newsletterCtrl.newsletterForm.phone.$touched">
+        Phone must be in the format ###-###-####.
+      </span>
+      <br>
+      <input type="text" name="favourite_dish" placeholder="Favourite dish"
+        ng-model="newsletter.user.favourite_dish.short_name"
+        ng-blur="newsletterCtrl.validateDish(newsletter.user.favourite_dish.short_name)">
+      <br>
+      <span ng-if="newsletterCtrl.dishInvalid">
+        No such menu number exists
+      </span>
+      <br>
+      <button
+        ng-disabled="newsletterCtrl.newsletterForm.$invalid"
+        ng-click="newsletterCtrl.submit(newsletter.user)">Submit
+      </button>
+      <br>
+      <span ng-if="newsletterCtrl.saved">
+        Your information has been saved
+      </span>
+      <br>
+  </form>
+</div>
